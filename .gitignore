@@ -1,19 +1,36 @@
-# Dataset files
+# ==============================
+# Airbnb Dataset - DO NOT UPLOAD
+# ==============================
 Listings.csv
 Reviews.csv
 
+# ==============================
+# Jupyter
+# ==============================
+.ipynb_checkpoints/
+
+# ==============================
 # Python
+# ==============================
 __pycache__/
 *.py[cod]
+*.pyo
 
-# Virtual environments
+# ==============================
+# Virtual Environment
+# ==============================
 venv/
 .venv/
 env/
 
-# Streamlit secrets
+# ==============================
+# Streamlit
+# ==============================
 .streamlit/secrets.toml
 
-# OS files
+# ==============================
+# OS / Editor
+# ==============================
 .DS_Store
 Thumbs.db
+.vscode/

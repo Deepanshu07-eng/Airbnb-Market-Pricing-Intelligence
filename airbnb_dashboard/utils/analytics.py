@@ -1,5 +1,5 @@
 """
-Analytics and metrics computation for the Airbnb Market & Pricing Intelligence dashboard.
+Analytics and metrics computation for the Airbnb Market & Revenue Intelligence dashboard.
 
 All functions receive a pre-filtered DataFrame so computation is done once per filter change.
 """

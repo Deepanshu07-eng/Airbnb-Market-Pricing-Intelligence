@@ -1,79 +1,246 @@
 # Airbnb Market & Pricing Intelligence
 
-An interactive data analytics dashboard built with **Python, Pandas, Streamlit, and Plotly** to explore Airbnb listings, pricing, hosts, locations, property types, room types, ratings, and review activity across 10 global cities.
+A professional **Data Analytics project** that analyzes Airbnb listings, pricing patterns, locations, host characteristics, ratings, and review activity across 10 global cities.
 
-> IBM SkillBuild Internship Project
+> **IBM SkillsBuild Data Analytics Internship Project**
 
-## Project Overview
+## 📌 Project Overview
 
-The project turns large Airbnb listing and review datasets into an interactive business-intelligence dashboard. Users can filter the listing dataset and investigate how **price, property type, room type, capacity, host characteristics, location, ratings, and review activity** vary across markets.
+Airbnb listings vary significantly by location, room type, property type, guest capacity, host characteristics, and customer feedback.
 
-The project focuses on **market and pricing intelligence**. The available dataset does not contain booking-night or occupancy information, so the dashboard does **not** claim to calculate actual booking revenue.
+This project uses Python-based data analytics to answer practical marketplace questions such as:
 
-## Dashboard Sections
+- How is Airbnb supply distributed across cities and listing categories?
+- How do advertised listing prices vary by city, room type, property type, and guest capacity?
+- What descriptive differences can be observed between Superhosts and other hosts?
+- How do ratings vary across markets and listing segments?
+- How has review activity changed over time?
+- What business insights can be derived from these patterns?
 
-| Tab | Analysis |
+### Important data note
+
+The supplied dataset contains **advertised listing prices**, not realized booking revenue or occupancy data. Therefore, this project focuses on **market and pricing intelligence** rather than actual revenue or profit analysis.
+
+---
+
+## 🎯 Objectives
+
+1. Analyze Airbnb listing distribution across cities, room types, property types, and neighbourhoods.
+2. Understand pricing patterns using mean, median, and segment-level comparisons.
+3. Examine the relationship between guest capacity and advertised price.
+4. Compare descriptive host characteristics, including Superhost status.
+5. Analyze listing ratings and review activity.
+6. Translate data-driven findings into practical business recommendations.
+
+---
+
+## 📊 Project Components
+
+### 1. Jupyter Notebook
+
+`DeepanshuGautam_AirbnbMarketPricingIntelligence.ipynb`
+
+The notebook contains the detailed analytical workflow:
+
+- Business problem and objectives
+- Dataset understanding
+- Data quality audit
+- Data cleaning
+- Feature engineering
+- Exploratory Data Analysis
+- Pricing intelligence
+- Location analysis
+- Host analysis
+- Reviews and ratings analysis
+- Cross-analysis
+- Business findings
+- Recommendations
+- Limitations and future scope
+
+### 2. Streamlit Dashboard
+
+`app.py`
+
+The interactive dashboard provides:
+
+| Section | Focus |
 |---|---|
-| 📊 Overview | KPIs, room-type distribution, property-type distribution, summary insights |
-| 🗺️ Location | Geographic listing distribution, neighbourhood listing counts and prices |
-| 💰 Pricing | City, capacity, property-group and price-distribution analysis |
-| 🏡 Property & Room | Property groups, room types, capacity, pricing and ratings |
-| 👤 Hosts | Superhost comparison, host growth, response-time and host-profile metrics |
-| ⭐ Reviews | Review-score sub-metrics, rating distribution and review-volume trends |
+| Overview | Marketplace KPIs and listing composition |
+| Location | Geographic distribution and location patterns |
+| Pricing | Price comparisons and capacity-related analysis |
+| Property & Room | Property and room-type analysis |
+| Hosts | Superhost and host-performance comparisons |
+| Reviews | Ratings and review activity |
 
-## Dataset
+---
 
-| File | Rows | Description |
+## 📂 Dataset
+
+The project uses two datasets:
+
+| File | Raw Records | Description |
 |---|---:|---|
-| `Listings.csv` | 279,712 | Listing, host, location, property, room, price and review-score attributes |
-| `Reviews.csv` | 5,373,143 | Review-level records containing listing ID, reviewer ID and review date |
+| `Listings.csv` | 279,712 | Listing, host, location, pricing, property and rating information |
+| `Reviews.csv` | 5,373,143 | Review-level records containing listing, reviewer and date information |
 
-**Cities covered:** Paris, New York, Sydney, Rome, Rio de Janeiro, Istanbul, Mexico City, Bangkok, Cape Town, and Hong Kong.
+The notebook applies analytical cleaning to the listings data; after the documented price-cleaning steps, **279,319 listings remain for the main analysis**.
 
-The dashboard reads only the listing columns required for analysis. For the reviews dataset, only `listing_id` and `date` are loaded before aggregation.
+### Cities Covered
 
-## Data Preparation
+Paris, New York, Sydney, Rome, Rio de Janeiro, Istanbul, Mexico City, Bangkok, Cape Town, and Hong Kong.
 
-The pipeline includes:
+### Dataset fields used
 
-- Removal of zero-price listings.
-- Removal of listing prices above the 99.9th percentile to reduce the effect of extreme outliers.
-- Conversion of boolean fields such as Superhost and Instant Bookable from `t`/`f` values.
-- Parsing `host_since` into a datetime and deriving `host_since_year`.
-- Numeric coercion of `bedrooms`, response rate, and acceptance rate.
-- Creation of `price_per_person` from price and accommodates.
-- Grouping detailed property types into broader analytical categories.
-- Aggregation of the 5.37M review records into monthly review counts and listing-level review counts.
+Examples include:
 
-## Performance Approach
+`listing_id`, `host_id`, `host_since`, `host_response_rate`, `host_acceptance_rate`, `host_is_superhost`, `host_total_listings_count`, `neighbourhood`, `city`, `latitude`, `longitude`, `property_type`, `room_type`, `accommodates`, `bedrooms`, `price`, `minimum_nights`, `maximum_nights`, `review_scores_rating`, `review_scores_cleanliness`, `review_scores_location`, `review_scores_value`, `instant_bookable`
 
-The review file is substantially larger than the listings file. To keep the Streamlit application practical:
+---
 
-1. Only `listing_id` and `date` are read from `Reviews.csv`.
-2. Review records are aggregated into monthly and listing-level counts.
-3. The raw review table is released after aggregation.
-4. Streamlit caching avoids repeating expensive data-loading work during normal dashboard interaction.
-5. Listings are loaded with selected columns and compact dtypes.
+## 🧹 Data Cleaning
 
-## Tech Stack
+The project includes documented data-quality checks and cleaning steps, including:
 
-| Technology | Purpose |
-|---|---|
-| Python | Application and analytics logic |
-| Pandas | Data loading, cleaning, transformation and aggregation |
-| NumPy | Numeric/data-processing support |
-| Plotly | Interactive charts and geographic visualisation |
-| Streamlit | Interactive dashboard application |
+- Duplicate checks
+- Numeric conversion
+- Date conversion
+- Boolean standardization
+- Invalid/zero-price removal
+- Price outlier treatment using the 99.9th percentile
+- Safe handling of missing analytical fields
+- Feature creation such as `price_per_person`
+- Simplification of granular property types into analytical groups
 
-## Project Structure
+Cleaning decisions are documented in the notebook rather than silently applied.
+
+---
+
+## 📈 Visual Analytics
+
+The notebook uses:
+
+- **Pandas** for data manipulation
+- **NumPy** for numerical operations
+- **Matplotlib** for analytical charts
+- **Seaborn** for statistical visualizations
+- **Plotly** for interactive visualizations and geographic analysis
+- **Streamlit** for the interactive dashboard
+
+Charts cover listing supply, pricing, room types, property types, guest capacity, ratings, hosts, geography, and review trends.
+
+---
+
+## 🔍 Key Analytical Areas
+
+### Pricing Intelligence
+
+- Mean vs median listing price
+- City-level price patterns
+- Room-type pricing
+- Property-type pricing
+- Guest capacity vs price
+- Price per accommodated guest
+
+### Host Analysis
+
+- Superhost distribution
+- Rating comparison
+- Response and acceptance rates
+- Host listing concentration
+
+### Reviews & Ratings
+
+- Overall rating distribution
+- Ratings by market and listing segment
+- Review activity over time
+- Reviews per listing
+
+### Location Analysis
+
+- Listing concentration by city
+- Neighbourhood-level patterns where appropriate
+- Geographic distribution using latitude and longitude
+
+---
+
+## 💡 Business Insights
+
+The project focuses on **descriptive and evidence-based insights**.
+
+Examples of questions addressed include:
+
+- Which markets contain the largest listing supply?
+- Which listing categories dominate the marketplace?
+- Where are higher advertised prices observed?
+- How does price per accommodated guest change with listing capacity?
+- What descriptive differences exist between Superhosts and other hosts?
+- When did review activity reach its highest observed level?
+
+No causal conclusions are made from observational relationships.
+
+---
+
+## 🚀 How to Run
+
+### Prerequisites
+
+- Python 3.10+
+- Jupyter Notebook / JupyterLab
+- Streamlit
+
+### 1. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Keep the dataset files locally
+
+Place these files in the project root, alongside `app.py` and the notebook:
 
 ```text
-.
+Listings.csv
+Reviews.csv
+```
+
+The datasets are intentionally **not included in the GitHub repository** because of their large file sizes.
+
+### 3. Run the Jupyter Notebook
+
+Open:
+
+```text
+DeepanshuGautam_AirbnbMarketPricingIntelligence.ipynb
+```
+
+Run the cells from top to bottom.
+
+### 4. Run the Streamlit dashboard
+
+```bash
+streamlit run app.py
+```
+
+The dashboard will normally open at:
+
+```text
+http://localhost:8501
+```
+
+---
+
+## 🗂️ Project Structure
+
+```text
+Airbnb-Market-Pricing-Intelligence/
+│
 ├── app.py
-├── requirements.txt
+├── DeepanshuGautam_AirbnbMarketPricingIntelligence.ipynb
 ├── README.md
-├── Listings.csv
-├── Reviews.csv
+├── BUSINESS_RECOMMENDATIONS.md
+├── requirements.txt
+├── .gitignore
+│
 └── airbnb_dashboard/
     └── utils/
         ├── __init__.py
@@ -82,49 +249,58 @@ The review file is substantially larger than the listings file. To keep the Stre
         └── charts.py
 ```
 
-## Setup and Run
+> `Listings.csv` and `Reviews.csv` are kept locally and excluded from GitHub through `.gitignore`.
 
-### 1. Prerequisites
+---
 
-- Python 3.10+
-- The dataset CSV files placed in the same project directory as `app.py`
+## ⚙️ Performance Considerations
 
-### 2. Install dependencies
+The reviews dataset contains more than 5 million records.
 
-```bash
-pip install -r requirements.txt
-```
+To keep analysis practical:
 
-### 3. Run the dashboard
+- Only required review columns are loaded for review analysis.
+- Review activity is aggregated rather than repeatedly processing the full dataset.
+- Large raw tables are not dumped into notebook outputs.
+- Visualizations sample records only where necessary for readability.
 
-```bash
-streamlit run app.py
-```
+---
 
-The application will normally be available at `http://localhost:8501`.
+## ⚠️ Limitations
 
-## Important Dataset Note
+- No actual booking revenue is available.
+- No occupancy data is available.
+- Advertised listing price is not the same as realized transaction revenue.
+- Review activity does not equal booking activity.
+- Some fields contain substantial missing values.
+- Cross-city prices are recorded in local currencies and should not be treated as directly equivalent without currency normalization.
+- Observational analysis can identify associations and patterns but cannot establish causality.
+- The listing dataset represents a snapshot rather than a complete time series of dynamic prices.
 
-The raw CSV files are large and are **not recommended for GitHub storage**. The repository should contain the application code, requirements, README, and project documentation, while the dataset can be obtained separately and placed beside `app.py` before running the application.
+---
 
-## Key Analytical Questions
+## 🔮 Future Scope
 
-The dashboard is designed to answer questions such as:
+Potential extensions include:
 
-- How is Airbnb supply distributed across cities and neighbourhoods?
-- How do prices vary by city, room type, property group, and guest capacity?
-- What room and property categories represent the largest share of listings?
-- How do Superhost and regular-host listing metrics differ?
-- How do review scores vary across cities and score categories?
-- How has review activity changed over time?
+- Occupancy and booking analysis
+- Actual revenue analysis
+- Booking conversion analysis
+- Dynamic pricing analysis
+- Review-text sentiment analysis if review text becomes available
+- Time-series forecasting
+- Machine Learning as a separate future extension
 
-## Limitations
+Machine Learning is intentionally **outside the scope of this Data Analytics project**.
 
-- The dataset provides listing prices, not realized booking revenue.
-- Review counts are used as an activity signal and should not be interpreted as occupancy.
-- The analysis describes the supplied dataset and should not automatically be treated as a current representation of Airbnb's live marketplace.
-- Price is analysed as a listing attribute; it is not equivalent to realized transaction price.
+---
 
-## Disclaimer
+## 👨‍💻 Author
 
-This project is an educational analytics application developed for the IBM SkillBuild internship project using the supplied Airbnb datasets.
+**Deepanshu Gautam**
+
+IBM SkillsBuild Data Analytics Internship Project
+
+### Project
+
+**Airbnb Market & Pricing Intelligence**

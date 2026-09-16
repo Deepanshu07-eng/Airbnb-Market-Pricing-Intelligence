@@ -1,5 +1,5 @@
 """
-Data loading and cleaning utilities for the Airbnb Market & Pricing Intelligence dashboard.
+Data loading and cleaning utilities for the Airbnb Market & Revenue Intelligence dashboard.
 
 Designed for memory efficiency:
 - Listings are cached once after cleaning (via st.cache_data).
@@ -108,6 +108,8 @@ def _simplify_property_type(pt: str) -> str:
         return "Hotel / Boutique"
     if "bed and breakfast" in pt_lower or "b&b" in pt_lower or "guesthouse" in pt_lower:
         return "B&B / Guesthouse"
+    if "serviced apartment" in pt_lower:
+        return "Serviced Apartment"
     if "guest suite" in pt_lower or "guest house" in pt_lower:
         return "Guest Suite"
     return "Other"

@@ -1,5 +1,5 @@
 """
-Plotly chart factory for the Airbnb Market & Pricing Intelligence dashboard.
+Plotly chart factory for the Airbnb Market & Revenue Intelligence dashboard.
 
 Each function returns a go.Figure ready to pass to st.plotly_chart().
 Colour palette keeps a consistent professional look throughout the app.
