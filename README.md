@@ -304,3 +304,12 @@ IBM SkillsBuild Data Analytics Internship Project
 ### Project
 
 **Airbnb Market & Pricing Intelligence**
+
+
+## Copyright & Usage
+
+© 2026 Deepanshu Gautam. All Rights Reserved.
+
+This repository is shared for portfolio, educational, and evaluation purposes.
+
+The code, analysis, visualizations, documentation, and project structure are original work and may not be copied, reproduced, redistributed, or submitted as another person's project without explicit permission from the author.
