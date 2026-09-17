@@ -74,16 +74,24 @@ The interactive dashboard provides:
 
 ---
 
-## 📂 Dataset
+## 📊 Dataset
 
-The project uses two datasets:
+This project uses the **Airbnb Listings & Reviews Dataset**, containing Airbnb listing information and historical review data across 10 major cities.
 
-| File | Raw Records | Description |
-|---|---:|---|
-| `Listings.csv` | 279,712 | Listing, host, location, pricing, property and rating information |
-| `Reviews.csv` | 5,373,143 | Review-level records containing listing, reviewer and date information |
+### Dataset Source
 
-The notebook applies analytical cleaning to the listings data; after the documented price-cleaning steps, **279,319 listings remain for the main analysis**.
+The dataset was obtained from Kaggle:
+
+🔗 **[Airbnb Listings & Reviews Dataset – Kaggle](https://www.kaggle.com/datasets/joyshil0599/airbnb-listings-reviews)**
+
+The dataset includes:
+
+- `Listings.csv` — listing, host, property, pricing, availability, and rating information
+- `Reviews.csv` — historical review records
+- `Listings_data_dictionary.csv` — data dictionary for listing variables
+- `Reviews_data_dictionary.csv` — data dictionary for review variables
+
+> **Note:** The raw `Listings.csv` and `Reviews.csv` files are large and are therefore managed separately using Git LFS for the Streamlit deployment. The data dictionaries are included in this repository.
 
 ### Cities Covered
 
