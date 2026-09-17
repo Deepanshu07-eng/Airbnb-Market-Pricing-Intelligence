@@ -82,7 +82,7 @@ This project uses the **Airbnb Listings & Reviews Dataset**, containing Airbnb l
 
 The dataset was obtained from Kaggle:
 
-🔗 **[Airbnb Listings & Reviews Dataset – Kaggle](https://www.kaggle.com/datasets/joyshil0599/airbnb-listings-reviews)**
+🔗 **[Airbnb Listings & Reviews Dataset – Kaggle](https://www.kaggle.com/datasets/mysarahmadbhat/airbnb-listings-reviews/data?utm_source=chatgpt.com)**
 
 The dataset includes:
 
