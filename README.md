@@ -38,7 +38,7 @@ The supplied dataset contains **advertised listing prices**, not realized bookin
 
 ### 1. Jupyter Notebook
 
-`DeepanshuGautam_AirbnbMarketPricingIntelligence.ipynb`
+`Deepanshu_AirbnbMarketPricingIntelligence.ipynb`
 
 The notebook contains the detailed analytical workflow:
 
